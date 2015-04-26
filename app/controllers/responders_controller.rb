@@ -7,16 +7,13 @@ class RespondersController < ApplicationController
     if @responder.save
       render 'create', status: 201
     else
-      render json: { 'message' => @responder.errors }, status: 422
+      render json: { message: @responder.errors }, status: 422
     end
   end
 
   def index
-    if params[:show] == 'capacity'
-      @responders = Responder.capacity
-    else
-      @responders = Responder.all
-    end
+    render 'capacity' if params[:show] == 'capacity'
+    @responders = Responder.all
   end
 
   def show

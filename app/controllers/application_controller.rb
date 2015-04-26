@@ -7,6 +7,6 @@ class ApplicationController < ActionController::Base
   end
 
   def catch_unpermitted_parameters
-    render json: { message: $ERROR_INFO.message }, status: :unprocessable_entity
+    render json: { message: $ERROR_INFO.message }, status: 422
   end
 end
